@@ -21,7 +21,18 @@ This project is a full-stack integration platform that allows users to connect w
    pip install -r backend/requirements.txt
    ```
 2. **Environment Variables:**
-   - Create a `.env` file in the `backend/` directory with your API credentials for Notion, Airtable, and Hubspot.
+   - Copy the provided `.env.example` file in the `backend/` directory to `.env` and fill in your API credentials for Notion, Airtable, and Hubspot:
+     ```bash
+     cp backend/.env.example backend/.env
+     ```
+   - For Hubspot, you need to create a public app to obtain your Client ID and Client Secret:
+     1. Go to the [Hubspot Developer Portal](https://developers.hubspot.com/).
+     2. Log in and navigate to 'Apps' > 'Create app'.
+     3. Fill in the required details (name, description, etc.).
+     4. Under 'Auth', set the Redirect URL to `http://localhost:8000/integrations/hubspot/oauth2callback`.
+     5. Select the required scopes (e.g., `crm.objects.contacts.read`, `oauth`).
+     6. After creating the app, you will see your **Client ID** and **Client Secret** on the app details page.
+     7. Add these values to your `.env` file as `HUBSPOT_CLIENT_ID` and `HUBSPOT_CLIENT_SECRET`.
 3. **Run Redis server:**
    - Make sure you have Redis installed and running locally. For most systems, you can start Redis with:
      ```bash
