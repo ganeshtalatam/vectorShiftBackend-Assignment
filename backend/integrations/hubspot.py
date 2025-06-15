@@ -27,7 +27,8 @@ SCOPES = [
     'oauth'
 ]
 SCOPES_STRING = ' '.join(SCOPES)
-authorization_url = f'https://app-na2.hubspot.com/oauth/authorize?client_id={HUBSPOT_CLIENT_ID}&redirect_uri={REDIRECT_URI}&scope=oauth&optional_scope=crm.objects.contacts.read'
+
+authorization_url = f'https://app-na2.hubspot.com/oauth/authorize?client_id={HUBSPOT_CLIENT_ID}&redirect_uri={REDIRECT_URI}&scope={SCOPES_STRING}'
 encoded_client_id_secret = base64.b64encode(f'{HUBSPOT_CLIENT_ID}:{HUBSPOT_CLIENT_SECRET}'.encode()).decode()
 
 async def authorize_hubspot(user_id, org_id):
